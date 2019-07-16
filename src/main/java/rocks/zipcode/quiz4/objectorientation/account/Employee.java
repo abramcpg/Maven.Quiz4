@@ -4,11 +4,10 @@ package rocks.zipcode.quiz4.objectorientation.account;
  * @author leon on 30/12/2018.
  */
 public class Employee implements Worker{
-    Double hourlyWage = null;
-    Double hoursWorked = null;
-    Double balance = null;
-    Double bankAccountBalance = balance;
-    Double moneyEarned = hourlyWage * hoursWorked;
+    Double hourlyWage = 35.0;
+    Double hoursWorked = 0.0;
+    Double balance = 0.0;
+    Double bankAccountBalance = 0.0;
     public Employee() {
 
     }
@@ -41,6 +40,6 @@ public class Employee implements Worker{
 
     @Override
     public Double getMoneyEarned() {
-        return moneyEarned;
+        return null;
     }
 }
