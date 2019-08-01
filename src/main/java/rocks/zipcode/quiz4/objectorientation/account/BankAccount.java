@@ -5,6 +5,11 @@ package rocks.zipcode.quiz4.objectorientation.account;
  */
 public class BankAccount extends Account implements Transactable{
     Double balance;
+
+    public BankAccount(){
+        this.balance = 0.0;
+    }
+
     public void setBalance(Double val) {
         this.balance = val;
     }

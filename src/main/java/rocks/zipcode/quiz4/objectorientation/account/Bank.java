@@ -9,9 +9,13 @@ import java.util.List;
 public class Bank {
     private ArrayList<BankAccount> accountList = new ArrayList<BankAccount>();
 
-    public void removeBankAccountByIndex(Integer indexNumber) {
-        this.accountList.remove(indexNumber);
-        //return null;
+    public BankAccount removeBankAccountByIndex(Integer indexNumber) {
+        if (this.accountList.get(indexNumber) != null){
+            BankAccount account = this.accountList.get(indexNumber);
+            this.accountList.remove(this.accountList.get(indexNumber));
+            return account;
+        }
+        return null;
     }
 
     public void addBankAccount(BankAccount bankAccount) {

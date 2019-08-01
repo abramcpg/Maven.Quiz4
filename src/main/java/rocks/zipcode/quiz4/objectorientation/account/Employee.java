@@ -53,13 +53,19 @@ public class Employee implements Worker, Transactable{
     public Double getMoneyEarned() { return this.hoursWorked * hourlyWage; }
 
     @Override
-    public void deposit(Double amountToIncreaseBy) { this.balance += amountToIncreaseBy;}
+    public void deposit(Double amountToIncreaseBy) {
+        this.balance += amountToIncreaseBy;
+        this.bankAccount.deposit(amountToIncreaseBy);
+    }
 
     @Override
-    public void withdrawal(Double amountToDecreaseBy) { this.balance -= amountToDecreaseBy;}
+    public void withdrawal(Double amountToDecreaseBy) {
+        this.balance -= amountToDecreaseBy;
+        this.bankAccount.withdrawal(amountToDecreaseBy);
+    }
 
     @Override
     public Double getBalance() {
-        return balance;
+        return this.bankAccount.getBalance();
     }
 }
