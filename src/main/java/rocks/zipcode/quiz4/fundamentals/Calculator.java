@@ -1,5 +1,7 @@
 package rocks.zipcode.quiz4.fundamentals;
 
+import com.sun.tools.jdi.DoubleValueImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +18,19 @@ public class Calculator {
     }
 
     public static Double[] squareRoots(Double... value) {
-        ArrayList<Double> array = new ArrayList(value.length);
-        for(Double i: value) array.add(Math.sqrt(i));
-        Double[] newArray = new Double[value.length];
-        newArray = (Double[]) array.toArray();
-        return newArray;
+        Double[] doubles = new Double[value.length];
+        for (int i = 0; i < doubles.length; i++) {
+            doubles[i] = Math.sqrt(value[i]);
+        }
+        return doubles;
     }
 
     public static Double[] squares(Double... values) {
-        return null;
+        Double[] doubles = new Double[values.length];
+        for (int i = 0; i < doubles.length; i++) {
+            doubles[i] = square(values[i]);
+        }
+        return doubles;
     }
 
     public static Double add(Double value1, Double value2) {

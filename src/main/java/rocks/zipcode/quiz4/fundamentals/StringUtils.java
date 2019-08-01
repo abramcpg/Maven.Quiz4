@@ -8,30 +8,19 @@ import java.util.Arrays;
  */
 public class StringUtils {
     public static Character getMiddleCharacter(String string) {
-        int length = string.length();
-        length /= 2;
-        Character middle = string.charAt(length);
-        return middle;
+        return string.charAt(string.length()/2);
     }
 
     public static String capitalizeMiddleCharacter(String str) {
-        if (str.length() == 1){return str.toUpperCase();}
-        int length = str.length();
-        length /= 2;
-        StringBuffer sb = new StringBuffer(str);
-        Character ch = Character.toUpperCase(sb.charAt(length));
-        String string = sb.toString().toUpperCase();
-        return string;
+        return str.substring(0, str.length()/2)+
+                getMiddleCharacter(str.toUpperCase())+
+                str.substring(str.length()/2+1);
     }
 
     public static String lowerCaseMiddleCharacter(String str) {
-        if (str.length() == 1){return str.toUpperCase();}
-        int length = str.length();
-        length /= 2;
-        StringBuffer sb = new StringBuffer(str);
-        Character ch = Character.toLowerCase(sb.charAt(length));
-        String string = sb.toString().toLowerCase();
-        return string;
+        return str.substring(0, str.length()/2)+
+                getMiddleCharacter(str.toLowerCase())+
+                str.substring(str.length()/2+1);
     }
 
     public static Boolean isIsogram(String str) {
@@ -89,6 +78,17 @@ public class StringUtils {
     }
 
     public static String invertCasing(String str) {
-        return null;
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if(Character.isUpperCase(c)){
+                chars[i] = Character.toLowerCase(c);
+            }
+            else if (Character.isLowerCase(c)){
+                chars[i] = Character.toUpperCase(c);
+            }
+        }
+
+        return chars.toString();
     }
 }
