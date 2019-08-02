@@ -1,32 +1,32 @@
 package rocks.zipcode.quiz4.collections.culonary;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.*;
 
 /**
  * @author leon on 27/12/2018.
  */
 public class Food {
-    HashMap<Spice, Integer> spiceMap = new HashMap<>();
+    public List<Spice> spices = new ArrayList<>();
 
     public List<Spice> getAllSpices() {
-        List<Spice> spiceList = new ArrayList<>();
-
-        Set<Spice> spiceSet = spiceMap.keySet();
-
-        spiceList.addAll(spiceSet);
-
-        return spiceList;
+        return this.spices;
     }
 
     public <SpiceType extends Class<? extends Spice>> Map<SpiceType, Integer> getSpiceCount() {
-        return null;
+        Map<SpiceType, Integer> map = new HashMap<>();
+        spices.stream().map(x -> (SpiceType) x.getClass()).forEach(x -> {
+            if(map.containsKey(x)) map.replace(x, map.get(x) + 1);
+            else map.put(x, 1);
+        });
+        return map;
+    }
+
+    private <T extends Class<? extends Spice>> String genericTest(T var){
+        return var.getSimpleName();
     }
 
     public void applySpice(Spice spice) {
-        if (spiceMap.containsKey(spice)){
-            spiceMap.replace(spice, spiceMap.get(spice)+1);
-        }else{
-            spiceMap.put(spice, 1);
-        }
+        this.spices.add(spice);
     }
 }
